@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: source
+    database: ecommerce_project
+    schema: source 
+    tables:
+      - name: oct_2019
+      

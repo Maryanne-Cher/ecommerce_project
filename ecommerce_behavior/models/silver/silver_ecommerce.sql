@@ -10,7 +10,7 @@ WITH silver_data AS (
 )
 
 SELECT
-    event_key,
+    ROW_NUMBER() OVER (ORDER BY event_date_and_time ASC) AS event_key,
     event_date_and_time,
     CAST(LEFT(event_date_and_time, 19) AS DATE) AS event_date,
     CAST(TRY_TO_TIMESTAMP_NTZ(LEFT(event_date_and_time, 19)) AS TIME) AS event_time_only,

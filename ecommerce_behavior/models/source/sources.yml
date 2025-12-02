@@ -6,4 +6,10 @@ sources:
     schema: source 
     tables:
       - name: oct_2019
+      - name: nov_2019
+      - name: dec_2019
+      - name: jan_2020
+      - name: feb_2020
+      - name: mar_2020
+      - name: apr_2020
       

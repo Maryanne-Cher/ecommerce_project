@@ -1,9 +1,9 @@
-WITH oct_2019 AS (
+WITH bronze_data AS (
     SELECT * 
     FROM {{ source('source', 'oct_2019') }}
 )
 SELECT 
-    CAST(event_time AS TIMESTAMP_LTZ) AS event_time,
+    CAST(LEFT(event_time, 19) AS TIMESTAMP_NTZ) AS event_time,
     event_type,
     product_id,
     category_id,
@@ -12,5 +12,5 @@ SELECT
     price,
     user_id,
     user_session
-FROM oct_2019
+FROM bronze_data
 LIMIT 5000000

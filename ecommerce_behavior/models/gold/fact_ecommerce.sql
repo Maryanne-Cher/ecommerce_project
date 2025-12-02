@@ -17,7 +17,6 @@ fact AS (
         event_time_only,
         event_type,
         product_id,
-        category_id,
         category,
         subcategory,
         price,

@@ -1,0 +1,212 @@
+version: 2
+# documentation for bronze_ecommerce
+models:
+  - name: bronze_ecommerce
+    description: Bronze layer for ecommerce behavior data (October 2019 - April 2020)
+    columns:
+      - name: event_date_and_time
+        description: Time and date when event happened
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: event_type
+        description: Online customer journey broken down into view, purchase, cart
+        data_data_tests:
+          - accepted_values:
+              values: ['view', 'purchase', 'cart', 'remove_from_cart']
+              severity: warn
+
+      - name: product_id
+        description: ID of a product
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: category_id
+        description: Product's category ID
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: category_code
+        description: Product's category code
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: brand
+        description: Downcased string of brand name; can be missing
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: price
+        description: Float price of a product
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: user_id
+        description: Permanent user ID
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: user_session
+        description: Temporary user session id; changes each time the user returns to the store
+        data_tests:
+          - not_null:
+              severity: warn
+
+# documentation and data_tests for silver_ecommerce
+  - name: silver_ecommerce
+    description: Silver layer for cleaned ecommerce data (aggregated and enriched)
+    columns:
+      - name: event_date_and_time
+        description: Date and time when event happened
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: event_date
+        description: Date when event happened
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: event_time_only
+        description: Time when event happened
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: event_type
+        description: Online customer journey broken down into view, purchase, cart
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: product_id
+        description: ID of a product
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: category_id
+        description: Product category ID
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: category
+        description: Main branch of the category
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: subcategory
+        description: Second branch of the category
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: brand
+        description: Brand name
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: price
+        description: Product price
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: user_id
+        description: Permanent user ID
+        data_tests:
+          - not_null:
+              severity: warn
+
+      - name: user_session
+        description: Session ID
+        data_tests:
+          - not_null:
+              severity: warn
+
+# documentation and data_tests for fact_ecommerce
+  - name: fact_ecommerce
+    description: Fact table containing e-commerce events
+    columns:
+    - name: event_key
+      description: Unique surrogate key, primary key for this table
+      data_tests:
+        - not_null
+        - unique
+
+    - name: event_date
+      description: Date when event happened
+      data_tests:
+        - not_null
+
+    - name: event_time_only
+      description: Time when event happened
+      data_tests:
+        - not_null
+
+    - name: event_type
+      description: Online customer journey broken down into view, purchase, cart
+      data_tests:
+        - not_null
+
+    - name: product_id
+      description: ID of a product
+      data_tests:
+        - not_null
+
+    - name: category
+      description: Product category ID
+      data_tests:
+        - not_null
+
+    - name: subcategory
+      description: Category broken down into main and second-tier categories
+      data_tests:
+        - not_null
+
+    - name: price
+      description: Price of the product
+      data_tests:
+        - not_null
+
+    - name: user_id
+      description: Permanent user ID
+      data_tests:
+        - not_null
+
+    - name: user_session
+      description: Temporary user session ID; changes each time the user returns to the store
+      data_tests:
+        - not_null
+
+
+# documentation and data_tests for dim_products
+  - name: dim_products
+    description: Dimension table for products
+    columns:
+      - name: product_id
+        description: Primary key for the products
+        data_tests:
+          - not_null
+          - unique
+
+      - name: category_id
+        description: Category ID for the products
+        data_tests:
+          - not_null
+
+      - name: brand
+        description: Brand name for the products
+        data_tests:
+          - not_null

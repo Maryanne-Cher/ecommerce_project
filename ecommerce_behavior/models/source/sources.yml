@@ -3,13 +3,51 @@ version: 2
 sources:
   - name: source
     database: ecommerce_project
-    schema: source 
+    schema: source
+
     tables:
       - name: oct_2019
+        description: raw ecommerce behavior data from source table (October 2019)
+        columns: &source_columns
+          - name: event_time
+            description: Time and date when event happened
+          - name: event_type
+            description: Online customer journey broken down into view, purchase, cart
+          - name: product_id
+            description: ID of a product
+          - name: category_id
+            description: Product's category ID
+          - name: category_code
+            description: Product's category code
+          - name: brand
+            description: Downcased string of brand name; can be missing
+          - name: price
+            description: Float price of a product
+          - name: user_id
+            description: Permanent user ID
+          - name: user_session
+            description: Temporary user session id; changes each time the user returns to the store
+
       - name: nov_2019
+        description: raw ecommerce behavior data from source table (November 2019)
+        columns: *source_columns
+
       - name: dec_2019
+        description: raw ecommerce behavior data from source table (December 2019)
+        columns: *source_columns
+
       - name: jan_2020
+        description: raw ecommerce behavior data from source table (January 2020)
+        columns: *source_columns
+
       - name: feb_2020
+        description: raw ecommerce behavior data from source table (February 2020)
+        columns: *source_columns
+
       - name: mar_2020
+        description: raw ecommerce behavior data from source table (March 2020)
+        columns: *source_columns
+
       - name: apr_2020
-      
+        description: raw ecommerce behavior data from source table (April 2020)
+        columns: *source_columns

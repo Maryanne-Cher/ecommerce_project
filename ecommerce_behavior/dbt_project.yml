@@ -33,11 +33,11 @@ models:
   ecommerce_behavior:
     # Config indicated by + and applies to all files under models/example/
     bronze:
-      +materialized: view
+      +materialized: incremental
       schema: bronze
     silver:
-      +materialized: view
+      +materialized: incremental
       schema: silver
     gold:
-      +materialized: view
+      +materialized: incremental
       schema: gold

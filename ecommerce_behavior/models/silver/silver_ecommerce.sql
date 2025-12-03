@@ -17,7 +17,7 @@ SELECT
     event_type,
     product_id,
     category_id,
-        CASE 
+        CASE
         WHEN POSITION('.' IN category_code) > 0
             THEN SPLIT_PART(category_code, '.', 1)
         ELSE 'UNKNOWN'

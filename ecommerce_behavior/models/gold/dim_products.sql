@@ -27,6 +27,6 @@ SELECT
     brand
 FROM ranked_products
 WHERE rn = 1
---{% if is_incremental() %}
- -- AND product_id NOT IN (SELECT product_id FROM {{ this }})
---{% endif %}
+{% if is_incremental() %}
+AND product_id NOT IN (SELECT product_id FROM {{ this }})
+{% endif %}

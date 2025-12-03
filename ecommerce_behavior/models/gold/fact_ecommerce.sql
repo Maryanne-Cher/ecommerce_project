@@ -27,3 +27,7 @@ fact AS (
 
 SELECT *
 FROM fact
+
+{% if is_incremental() %}
+  WHERE event_key NOT IN (SELECT event_key FROM {{ this }})
+{% endif %}

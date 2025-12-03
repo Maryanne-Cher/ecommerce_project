@@ -5,14 +5,18 @@
 }}
 
 WITH bronze_data AS (
-    SELECT * FROM {{ source('source', 'oct_2019') }}
-    {{ limit_rows() }}
-    
+    (
+        SELECT * FROM {{ source('source', 'oct_2019') }}
+        {{ limit_rows() }}
+    )
+
     UNION ALL
 
-    (SELECT * FROM {{ source('source', 'nov_2019')}})
-    {{ limit_rows() }}
+    (
+        (SELECT * FROM {{ source('source', 'nov_2019')}})
+        {{ limit_rows() }}
 
+    )
 )
 
 SELECT

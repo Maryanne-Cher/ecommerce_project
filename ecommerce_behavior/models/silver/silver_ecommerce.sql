@@ -34,6 +34,6 @@ SELECT
 FROM silver_data
 
 {% if is_incremental() %}
- Only insert rows that are new based on surrogate key
+ --Only insert rows that are new based on surrogate key
 WHERE event_key NOT IN (SELECT event_key FROM {{ this }})
 {% endif %}

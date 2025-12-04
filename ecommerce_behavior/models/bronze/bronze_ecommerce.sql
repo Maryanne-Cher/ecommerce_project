@@ -17,6 +17,30 @@ WITH bronze_data AS (
         {{ limit_rows() }}
 
     )
+
+    UNION ALL
+
+    (
+        (SELECT * FROM {{ source('source', 'dec_2019')}})
+        {{ limit_rows() }}
+
+    )
+
+    UNION ALL
+
+    (
+        (SELECT * FROM {{ source('source', 'jan_2020')}})
+        {{ limit_rows() }}
+
+    )
+    
+    UNION ALL
+
+    (
+        (SELECT * FROM {{ source('source', 'feb_2020')}})
+        {{ limit_rows() }}
+
+    )
 )
 
 SELECT

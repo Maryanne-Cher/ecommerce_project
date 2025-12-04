@@ -24,7 +24,8 @@ ranked_products AS (
 SELECT
     product_id,
     category_id,
-    brand
+    brand,
+    CURRENT_TIMESTAMP() AS updated_at
 FROM ranked_products
 WHERE rn = 1
 {% if is_incremental() %}

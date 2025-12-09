@@ -33,11 +33,14 @@ models:
   ecommerce_behavior:
     # Config indicated by + and applies to all files under models/example/
     bronze:
+      +database: "{{ target.database}}"
       +materialized: incremental
       schema: bronze
     silver:
+      +database: "{{ target.database}}"
       +materialized: incremental
       schema: silver
     gold:
+      +database: "{{ target.database}}"
       +materialized: incremental
       schema: gold

@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: source
-    database: ecommerce_project
+    database: "{{ target.database }}"
     schema: source
 
     tables:

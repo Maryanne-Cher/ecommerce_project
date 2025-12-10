@@ -95,9 +95,8 @@ dbt is the core transformation layer of the pipeline. I used dbt to:
 
 ---
 
-## 📁 Project Repository
 
-🔗 **GitHub:** [https://github.com/Maryanne-Cher/ecommerce_dataset](https://github.com/Maryanne-Cher/ecommerce_dataset)
+
 
 
 
